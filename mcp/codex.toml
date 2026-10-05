@@ -1,0 +1,5 @@
+# ~/.codex/config.toml
+[mcp_servers.doconda]
+command = "npx"
+args = ["-y", "@doconda/mcp"]
+env = { DOCONDA_API_KEY = "ak_eu_…" }
