@@ -25,9 +25,17 @@ export DOCONDA_API_KEY=ak_eu_…   # get one at https://doconda.com
 | LangGraph | [`python/langgraph_agent.py`](python/langgraph_agent.py) | LangGraph agent with Doconda's tools |
 | Vercel AI SDK | [`typescript/ai-sdk.ts`](typescript/ai-sdk.ts) | AI SDK agent (any model) with Doconda's tools |
 | Mastra | [`typescript/mastra.ts`](typescript/mastra.ts) | Mastra agent with Doconda's tools |
-| Claude Code, Cursor, Codex, Claude Desktop | [`mcp/`](mcp) | Add Doconda as an MCP server |
+| Remote MCP | [`python/openai_remote_mcp.py`](python/openai_remote_mcp.py) | OpenAI Responses API with Doconda's remote MCP server, no SDK |
+| MCP clients | [`mcp/`](mcp) | Add Doconda as an MCP server to Claude Desktop and other clients |
 
 Every agent example uses `Doconda().tools()`: ready-made tools (name, description, JSON Schema, `run`) to create, review and edit documents. The model decides when to call them and returns the links to the files.
+
+## Step-by-step tutorials
+
+- [Excel from an Amazon Bedrock agent](https://docs.doconda.com/en/tutorials/bedrock-excel)
+- [A Vercel AI SDK chatbot that returns a Word file](https://docs.doconda.com/en/tutorials/ai-sdk-chatbot-word)
+- [PowerPoint from Gemini on Vertex AI](https://docs.doconda.com/en/tutorials/vertex-powerpoint)
+- [Review and fix a Word file before sending it](https://docs.doconda.com/en/tutorials/review-word)
 
 ## Docs
 
