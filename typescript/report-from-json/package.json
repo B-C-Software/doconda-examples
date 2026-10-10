@@ -1,0 +1,23 @@
+{
+  "name": "doconda-report-from-json",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn structured JSON findings into a branded, editable Word report (DOCX) and a PDF with the Doconda SDK.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "start": "tsx example.ts"
+  },
+  "dependencies": {
+    "@doconda/sdk": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

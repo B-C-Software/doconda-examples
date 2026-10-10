@@ -24,3 +24,5 @@ while True:
         {"type": "tool_result", "tool_use_id": b.id, "content": json.dumps(next(t for t in tools if t.name == b.name).run(b.input))}
         for b in res.content if b.type == "tool_use"
     ]})
+
+print("".join(b.text for b in res.content if b.type == "text"))

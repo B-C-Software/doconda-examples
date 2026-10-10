@@ -23,3 +23,4 @@ const agent = new Agent({
 })
 
 const { text } = await agent.generate("Create a 5-slide presentation on our quarterly results")
+console.log(text)

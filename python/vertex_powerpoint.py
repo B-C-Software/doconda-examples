@@ -16,7 +16,7 @@ config = types.GenerateContentConfig(
         types.FunctionDeclaration(name=t.name, description=t.description, parameters_json_schema=t.input_schema) for t in tools
     ])]
 )
-contents = [types.Content(role="user", parts=[types.Part.from_text(text="Make an Excel with the event budget")])]
+contents = [types.Content(role="user", parts=[types.Part.from_text(text="Create a 5-slide presentation on our quarterly results")])]
 
 while True:
     res = client.models.generate_content(model="gemini-3.5-flash", contents=contents, config=config)
@@ -28,3 +28,5 @@ while True:
         for c in res.function_calls
     ]
     contents.append(types.Content(role="user", parts=parts))
+
+print(res.text)

@@ -20,3 +20,4 @@ const { text } = await generateText({
   stopWhen: isStepCount(5),
   prompt: "Create a 5-slide presentation on our quarterly results",
 })
+console.log(text)
