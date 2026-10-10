@@ -19,7 +19,7 @@ config = types.GenerateContentConfig(
 contents = [types.Content(role="user", parts=[types.Part.from_text(text="Create a 5-slide presentation on our quarterly results")])]
 
 while True:
-    res = client.models.generate_content(model="gemini-3.5-flash", contents=contents, config=config)
+    res = client.models.generate_content(model="gemini-3.8-flash", contents=contents, config=config)
     if not res.function_calls:
         break
     contents.append(res.candidates[0].content)
