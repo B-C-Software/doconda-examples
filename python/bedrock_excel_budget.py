@@ -2,7 +2,7 @@
 
 pip install boto3 doconda
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
-Also needs: BEDROCK_MODEL_ID, AWS credentials
+Also needs: BEDROCK_MODEL_ID, AWS credentials and region (AWS_REGION)
 """
 
 import json
@@ -29,3 +29,5 @@ while True:
             out = next(t for t in tools if t.name == use["name"]).run(use["input"])
             results.append({"toolResult": {"toolUseId": use["toolUseId"], "content": [{"text": json.dumps(out)}]}})
     messages.append({"role": "user", "content": results})
+
+print("".join(b["text"] for b in message["content"] if "text" in b))

@@ -23,3 +23,5 @@ while True:
     for call in message.tool_calls:
         out = next(t for t in tools if t.name == call.function.name).run(json.loads(call.function.arguments))
         messages.append({"role": "tool", "tool_call_id": call.id, "content": json.dumps(out)})
+
+print(message.content)

@@ -18,5 +18,6 @@ open("sales.docx", "wb").write(doconda.documents.download(doc["id"], "docx"))
 xlsx = doconda.documents.create(format="xlsx", prompt="Event budget by line item, with totals and VAT")
 open("budget.xlsx", "wb").write(doconda.documents.download(xlsx["id"], "xlsx"))
 
+# Review a Word file of your own (contract.docx is not included in this repo)
 reviewed = doconda.documents.create(operation="review", file=doconda.files.upload("contract.docx")["id"])
 print(reviewed["status"], doconda.documents.report(reviewed["id"])["issues"])
