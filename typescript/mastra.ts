@@ -1,6 +1,6 @@
 // Mastra agent with Doconda's tools.
-// npm install @mastra/core @doconda/sdk
-// export DOCONDA_API_KEY=ak_eu_…  (https://doconda.com)
+// Run from typescript/: npm install && npm run mastra
+// Needs DOCONDA_API_KEY (https://doconda.com) and ANTHROPIC_API_KEY, or another provider's model and key
 
 import { Agent } from "@mastra/core/agent"
 import { createTool } from "@mastra/core/tools"
@@ -10,7 +10,12 @@ const doconda = new Doconda()
 const tools = Object.fromEntries(
   doconda.tools().map((t) => [
     t.name,
-    createTool({ id: t.name, description: t.description, inputSchema: t.inputSchema, execute: (input) => t.run(input as Record<string, unknown>) }),
+    createTool({
+      id: t.name,
+      description: t.description,
+      inputSchema: t.inputSchema,
+      execute: (input) => t.run(input as Record<string, unknown>),
+    }),
   ]),
 )
 

@@ -1,4 +1,14 @@
 node_modules/
 out/
 .env
+.venv/
+__pycache__/
+.ruff_cache/
+*.py.lock
 .DS_Store
+
+# Files the Python examples write to the folder you run them from
+/*.docx
+/*.pdf
+/*.pptx
+/*.xlsx

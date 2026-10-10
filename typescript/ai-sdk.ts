@@ -1,6 +1,6 @@
 // Vercel AI SDK agent with Doconda's tools (any model).
-// npm install ai @ai-sdk/anthropic @doconda/sdk
-// export DOCONDA_API_KEY=ak_eu_…  (https://doconda.com)
+// Run from typescript/: npm install && npm run ai-sdk
+// Needs DOCONDA_API_KEY (https://doconda.com) and ANTHROPIC_API_KEY, or another provider's model and key
 
 import { anthropic } from "@ai-sdk/anthropic"
 import { generateText, isStepCount, jsonSchema, tool } from "ai"
@@ -10,7 +10,11 @@ const doconda = new Doconda()
 const tools = Object.fromEntries(
   doconda.tools().map((t) => [
     t.name,
-    tool({ description: t.description, inputSchema: jsonSchema(t.inputSchema), execute: (input) => t.run(input as Record<string, unknown>) }),
+    tool({
+      description: t.description,
+      inputSchema: jsonSchema(t.inputSchema),
+      execute: (input) => t.run(input as Record<string, unknown>),
+    }),
   ]),
 )
 

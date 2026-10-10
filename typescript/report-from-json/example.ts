@@ -73,7 +73,10 @@ function validate(input: unknown): FindingsReport {
     problems.push(`company.brandColor must be a hex colour like #1F4E79 (got "${data.company.brandColor}")`)
   }
   const parsedDate = new Date(`${data.report.date}T00:00:00Z`)
-  if (data.report.date && (Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== data.report.date)) {
+  if (
+    data.report.date &&
+    (Number.isNaN(parsedDate.getTime()) || parsedDate.toISOString().slice(0, 10) !== data.report.date)
+  ) {
     problems.push(`report.date must be a date like 2026-10-01 (got "${data.report.date}")`)
   }
 
@@ -165,7 +168,8 @@ function styleWarnings(doc: Document, { company }: FindingsReport): string[] {
   }
   if (!applied.cover_page) warnings.push("No cover page was applied.")
   if (!applied.page_numbers) warnings.push("No page numbers were applied.")
-  if (!applied.header?.includes(company.name)) warnings.push(`Header is "${applied.header ?? ""}", asked for "${company.name}".`)
+  if (!applied.header?.includes(company.name))
+    warnings.push(`Header is "${applied.header ?? ""}", asked for "${company.name}".`)
   if (!applied.footer) warnings.push("No footer was applied.")
   return warnings
 }
@@ -201,7 +205,9 @@ async function main(): Promise<number> {
   try {
     data = validate(JSON.parse(await readFile(inputPath, "utf8")))
   } catch (e) {
-    console.error(e instanceof InputError ? `${inputPath}: ${e.message}` : `Could not read ${inputPath}: ${(e as Error).message}`)
+    console.error(
+      e instanceof InputError ? `${inputPath}: ${e.message}` : `Could not read ${inputPath}: ${(e as Error).message}`,
+    )
     return 1
   }
 
@@ -260,7 +266,8 @@ async function main(): Promise<number> {
       console.log(`Saved ${path} (${(bytes.byteLength / 1024).toFixed(1)} KB)`)
     }
 
-    if (doc.status === "needs_review") console.warn("Status is needs_review: check the warnings above before sending it.")
+    if (doc.status === "needs_review")
+      console.warn("Status is needs_review: check the warnings above before sending it.")
     return 0
   } catch (e) {
     if (!(e instanceof DocondaError)) throw e
