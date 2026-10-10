@@ -1,0 +1,62 @@
+name: CI
+
+# Static checks only: it never calls the Doconda API and needs no secrets.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typescript:
+    name: TypeScript (${{ matrix.project }}, Node ${{ matrix.node }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { project: typescript, node: 22 }
+          - { project: typescript, node: 24 }
+          - { project: typescript/report-from-json, node: 20 }
+          - { project: typescript/report-from-json, node: 22 }
+          - { project: typescript/report-from-json, node: 24 }
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+          cache-dependency-path: ${{ matrix.project }}/package-lock.json
+      - run: npm ci
+      - run: npm run typecheck
+
+  python:
+    name: Python
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0
+      - run: uvx ruff@0.17.0 check python
+      - run: uvx ruff@0.17.0 format --check python
+      - name: Every script's inline dependencies resolve
+        run: for f in python/*.py; do uv lock --script "$f"; done
+      - run: python3 -m py_compile python/*.py
+
+  format:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - run: npx --yes prettier@3.9.10 --check "typescript/**/*.{ts,json}" "mcp/*.json"
