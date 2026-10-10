@@ -33,29 +33,30 @@ The script checks the final status and the style diagnostics, prints warnings, a
 
 ## Expected output
 
-Real output from a run on 10 October 2026 with `@doconda/sdk` 0.2.0. The files it produced are in [`examples/`](examples): [`report.docx`](examples/report.docx) and [`report.pdf`](examples/report.pdf).
+Real output from a run on 10 October 2026 with `@doconda/sdk` 0.4.0. The files it produced are in [`examples/`](examples): [`report.docx`](examples/report.docx) and [`report.pdf`](examples/report.pdf).
 
 ```text
 Read 6 findings from sample.json. Markdown saved to out/report.md
 Style: Inter 11 pt font, title and headings in #1F4E79, accent #1F4E79, with a cover page and page numbers, in the header: Harbor & Pine Advisory, in the footer: Confidential · Prepared for Example Logistics Ltd.
 Creating the document (create waits until it is finished)…
-Document doc_01M4KDKM516GTXVEFVD430FPBH: status ready, type report, 3 pages
+Document doc_01M4KFCBEKY4CYHH4ERD30MSDC: status ready, type report, 3 pages
 Style applied: Inter 11 pt, headings #1F4E79, accent #1F4E79, cover page yes, page numbers yes
   header: Harbor & Pine Advisory
   footer: Confidential · Prepared for Example Logistics Ltd.
+
 1 warning(s):
-  ! Style not applied: Inter must be installed on the reader's machine; the file names Inter but does not embed it, so Word will substitute another font where Inter is missing and pagination may shift slightly.
-Saved out/report.docx (14.9 KB)
-Saved out/report.pdf (91.7 KB)
+  ! Style not applied: Inter must be installed on the machine that opens the file; otherwise Word substitutes another font and the pagination can shift. The font was available here, so the rendered pages match.
+
+Saved out/report.docx (13.2 KB)
+Saved out/report.pdf (92.7 KB)
 ```
 
 What the warning means: the PDF embeds Inter, but a Word file only names its fonts, so Word substitutes another font
-where Inter isn't installed and pagination may shift slightly. Doconda says so in `style_unsupported`, which the script
-prints as `! Style not applied: …`. Messages are in English because the request sends no `Accept-Language`; send
-`Accept-Language: es` for Spanish.
+where Inter isn't installed. Doconda says so in `style_unsupported`, which the script prints as `! Style not applied: …`.
+Messages are in English by default; `new Doconda({ language: "es" })` returns them in Spanish.
 
 <p>
-  <img src="examples/report-page-1.png" alt="Page 1 of report.pdf: cover page in Inter with the title Cloud Security Assessment in dark blue, the client as subtitle, and client, prepared by and date" width="45%">
+  <img src="examples/report-page-1.png" alt="Page 1 of report.pdf: cover page in Inter with the title Cloud Security Assessment in dark blue over a rule, then client, prepared by and date" width="45%">
   <img src="examples/report-page-2.png" alt="Page 2 of report.pdf: header with the company name, executive summary, severity table, scope, findings overview table with a dark blue header row, the first detailed finding, footer and page number" width="45%">
 </p>
 
@@ -93,7 +94,7 @@ Anything you ask for that is not applied is printed as a warning before the file
 | [`.env.example`](.env.example) | Template for your `DOCONDA_API_KEY` |
 | [`examples/`](examples) | DOCX, PDF and page screenshots from the real run shown above |
 
-`npm run typecheck` type-checks the example. CI ([`typecheck.yml`](../../.github/workflows/typecheck.yml)) runs only that: no API calls, no secrets.
+`npm run typecheck` type-checks the example. CI ([`ci.yml`](../../.github/workflows/ci.yml)) runs it with Prettier: no API calls, no secrets.
 
 ## Docs
 
