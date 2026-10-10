@@ -1,0 +1,27 @@
+{
+  "name": "doconda-typescript-agent-examples",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TypeScript agents that create, review and edit documents with Doconda's tools.",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "ai-sdk": "tsx ai-sdk.ts",
+    "mastra": "tsx mastra.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.78",
+    "@doconda/sdk": "^0.4.0",
+    "@mastra/core": "^1.75.0",
+    "ai": "^7.0.137"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
