@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["doconda>=0.1", "openai-agents>=0.23"]
+# ///
 """OpenAI Agents SDK agent with Doconda's tools.
 
-pip install openai-agents doconda
+Run with uv:  uv run python/openai_agents_sdk.py
+Or with pip:  pip install openai-agents doconda && python python/openai_agents_sdk.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: OPENAI_API_KEY
 """

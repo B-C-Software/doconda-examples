@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["doconda>=0.1", "openai>=3.28"]
+# ///
 """Azure OpenAI agent that delivers a Word report.
 
-pip install openai doconda
+Run with uv:  uv run python/azure_openai_word_report.py
+Or with pip:  pip install openai doconda && python python/azure_openai_word_report.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: AZURE_OPENAI_ENDPOINT, AZURE_OPENAI_API_KEY, OPENAI_API_VERSION
 """
@@ -12,7 +17,10 @@ from openai import AzureOpenAI
 
 client = AzureOpenAI()
 tools = Doconda().tools()
-specs = [{"type": "function", "function": {"name": t.name, "description": t.description, "parameters": t.input_schema}} for t in tools]
+specs = [
+    {"type": "function", "function": {"name": t.name, "description": t.description, "parameters": t.input_schema}}
+    for t in tools
+]
 messages = [{"role": "user", "content": "Write a quarterly sales report in Word"}]
 
 while True:

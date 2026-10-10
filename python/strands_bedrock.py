@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["doconda>=0.1", "strands-agents>=1.59"]
+# ///
 """AWS Strands agent on Bedrock with Doconda's tools.
 
-pip install strands-agents doconda
+Run with uv:  uv run python/strands_bedrock.py
+Or with pip:  pip install strands-agents doconda && python python/strands_bedrock.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: BEDROCK_MODEL_ID, AWS credentials
 """

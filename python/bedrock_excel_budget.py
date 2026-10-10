@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["boto3>=1.43", "doconda>=0.1"]
+# ///
 """Amazon Bedrock (Converse API) agent that delivers an Excel budget.
 
-pip install boto3 doconda
+Run with uv:  uv run python/bedrock_excel_budget.py
+Or with pip:  pip install boto3 doconda && python python/bedrock_excel_budget.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: BEDROCK_MODEL_ID, AWS credentials and region (AWS_REGION)
 """
@@ -13,7 +18,12 @@ from doconda import Doconda
 
 bedrock = boto3.client("bedrock-runtime")
 tools = Doconda().tools()
-tool_config = {"tools": [{"toolSpec": {"name": t.name, "description": t.description, "inputSchema": {"json": t.input_schema}}} for t in tools]}
+tool_config = {
+    "tools": [
+        {"toolSpec": {"name": t.name, "description": t.description, "inputSchema": {"json": t.input_schema}}}
+        for t in tools
+    ]
+}
 messages = [{"role": "user", "content": [{"text": "Make an Excel with the event budget"}]}]
 
 while True:

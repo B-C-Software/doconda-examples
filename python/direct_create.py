@@ -1,23 +1,30 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["doconda>=0.1"]
+# ///
 """Generate a Word file (and its PDF) with one call, no agent: from a prompt or from Markdown.
 
-pip install doconda
+Run with uv:  uv run python/direct_create.py
+Or with pip:  pip install doconda && python python/direct_create.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 """
+
+from pathlib import Path
 
 from doconda import Doconda
 
 doconda = Doconda()
 
 doc = doconda.documents.create(format="docx", prompt="One-page report on the housing law, with a cover page")
-open("report.docx", "wb").write(doconda.documents.download(doc["id"], "docx"))
-open("report.pdf", "wb").write(doconda.documents.download(doc["id"], "pdf"))
+Path("report.docx").write_bytes(doconda.documents.download(doc["id"], "docx"))
+Path("report.pdf").write_bytes(doconda.documents.download(doc["id"], "pdf"))
 
 answer = "# Sales\n\n| Month | Sales |\n|---|---|\n| January | 12,400 |"  # what your LLM wrote
 doc = doconda.documents.create(format="docx", content={"markdown": answer}, style="dark blue headings")
-open("sales.docx", "wb").write(doconda.documents.download(doc["id"], "docx"))
+Path("sales.docx").write_bytes(doconda.documents.download(doc["id"], "docx"))
 
 xlsx = doconda.documents.create(format="xlsx", prompt="Event budget by line item, with totals and VAT")
-open("budget.xlsx", "wb").write(doconda.documents.download(xlsx["id"], "xlsx"))
+Path("budget.xlsx").write_bytes(doconda.documents.download(xlsx["id"], "xlsx"))
 
 # Review a Word file of your own (contract.docx is not included in this repo)
 reviewed = doconda.documents.create(operation="review", file=doconda.files.upload("contract.docx")["id"])

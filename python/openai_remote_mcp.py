@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["openai>=3.28"]
+# ///
 """OpenAI Responses API with Doconda's remote MCP server: no SDK, the model calls Doconda directly.
 
-pip install openai
+Run with uv:  uv run python/openai_remote_mcp.py
+Or with pip:  pip install openai && python python/openai_remote_mcp.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: OPENAI_API_KEY
 """

@@ -1,6 +1,11 @@
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["anthropic>=1.13", "doconda>=0.1"]
+# ///
 """Claude (Anthropic API) agent that delivers a Word memo.
 
-pip install anthropic doconda
+Run with uv:  uv run python/claude_word_memo.py
+Or with pip:  pip install anthropic doconda && python python/claude_word_memo.py
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
 Also needs: ANTHROPIC_API_KEY
 """
@@ -20,9 +25,19 @@ while True:
     messages.append({"role": "assistant", "content": res.content})
     if res.stop_reason != "tool_use":
         break
-    messages.append({"role": "user", "content": [
-        {"type": "tool_result", "tool_use_id": b.id, "content": json.dumps(next(t for t in tools if t.name == b.name).run(b.input))}
-        for b in res.content if b.type == "tool_use"
-    ]})
+    messages.append(
+        {
+            "role": "user",
+            "content": [
+                {
+                    "type": "tool_result",
+                    "tool_use_id": b.id,
+                    "content": json.dumps(next(t for t in tools if t.name == b.name).run(b.input)),
+                }
+                for b in res.content
+                if b.type == "tool_use"
+            ],
+        }
+    )
 
 print("".join(b.text for b in res.content if b.type == "text"))
