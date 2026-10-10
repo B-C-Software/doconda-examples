@@ -29,7 +29,7 @@ export DOCONDA_API_KEY=ak_eu_…   # get one at https://doconda.com
 | Remote MCP | [`python/openai_remote_mcp.py`](python/openai_remote_mcp.py) | OpenAI Responses API with Doconda's remote MCP server, no SDK |
 | MCP clients | [`mcp/`](mcp) | Add Doconda as an MCP server to Claude Desktop and other clients |
 
-Every agent example uses `Doconda().tools()`: ready-made tools (name, description, JSON Schema, `run`) to create, review and edit documents. The model decides when to call them and returns the links to the files.
+Every agent example except the remote MCP one (`openai_remote_mcp.py`, which points the model at Doconda's MCP server) uses `Doconda().tools()`: ready-made tools (name, description, JSON Schema, `run`) to create, review and edit documents. The model decides when to call them and returns the links to the files.
 
 ## Step-by-step tutorials
 

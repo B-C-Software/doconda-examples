@@ -2,14 +2,17 @@
 
 pip install google-genai doconda
 export DOCONDA_API_KEY=ak_eu_…  # https://doconda.com
+export GOOGLE_CLOUD_PROJECT=your-project-id
 Also needs: Google Cloud credentials (gcloud auth application-default login)
 """
+
+import os
 
 from doconda import Doconda
 from google import genai
 from google.genai import types
 
-client = genai.Client(vertexai=True, project="my-project", location="europe-west1")
+client = genai.Client(vertexai=True, project=os.environ["GOOGLE_CLOUD_PROJECT"], location="europe-west1")
 tools = Doconda().tools()
 config = types.GenerateContentConfig(
     tools=[types.Tool(function_declarations=[

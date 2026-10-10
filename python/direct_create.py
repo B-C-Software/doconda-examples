@@ -10,6 +10,7 @@ doconda = Doconda()
 
 doc = doconda.documents.create(format="docx", prompt="One-page report on the housing law, with a cover page")
 open("report.docx", "wb").write(doconda.documents.download(doc["id"], "docx"))
+open("report.pdf", "wb").write(doconda.documents.download(doc["id"], "pdf"))
 
 answer = "# Sales\n\n| Month | Sales |\n|---|---|\n| January | 12,400 |"  # what your LLM wrote
 doc = doconda.documents.create(format="docx", content={"markdown": answer}, style="dark blue headings")

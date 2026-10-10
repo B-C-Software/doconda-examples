@@ -39,28 +39,23 @@ Real output from a run on 10 October 2026 with `@doconda/sdk` 0.2.0. The files i
 Read 6 findings from sample.json. Markdown saved to out/report.md
 Style: Inter 11 pt font, title and headings in #1F4E79, accent #1F4E79, with a cover page and page numbers, in the header: Harbor & Pine Advisory, in the footer: Confidential · Prepared for Example Logistics Ltd.
 Creating the document (create waits until it is finished)…
-Document doc_01M4JRP14FBNNK1VFYX08X4C8E: status ready_with_warnings, type report, 3 pages
+Document doc_01M4KDKM516GTXVEFVD430FPBH: status ready, type report, 3 pages
 Style applied: Inter 11 pt, headings #1F4E79, accent #1F4E79, cover page yes, page numbers yes
   header: Harbor & Pine Advisory
   footer: Confidential · Prepared for Example Logistics Ltd.
-
-3 warning(s):
-  ! Style not applied: Inter no está instalada en este entorno: el render usa una fuente de sustitución, así que la paginación puede variar ligeramente en Word. En el equipo del cliente, el documento necesita tener Inter instalada (o incrustarla) para verse tal cual.
-  ! [info] El apartado «Findings overview» no tiene contenido. (page 2)
-  ! [warning] Fuentes que no tenemos: Inter. Se sustituyen por otras y la paginación puede variar respecto a Word.
-
-Saved out/report.docx (13.7 KB)
-Saved out/report.pdf (66.1 KB)
+1 warning(s):
+  ! Style not applied: Inter must be installed on the reader's machine; the file names Inter but does not embed it, so Word will substitute another font where Inter is missing and pagination may shift slightly.
+Saved out/report.docx (14.9 KB)
+Saved out/report.pdf (91.7 KB)
 ```
 
-What the warnings mean in this run:
-
-- **Font**: the renderer did not have Inter, so the PDF uses a substitute serif font (DejaVu Serif). The DOCX still names Inter in its styles, so Word shows Inter where it is installed.
-- **«Findings overview» has no content**: not true in this output. The section holds the findings table (see page 2 below). Treat `info` issues as hints.
-- The messages came back in Spanish in this run.
+What the warning means: the PDF embeds Inter, but a Word file only names its fonts, so Word substitutes another font
+where Inter isn't installed and pagination may shift slightly. Doconda says so in `style_unsupported`, which the script
+prints as `! Style not applied: …`. Messages are in English because the request sends no `Accept-Language`; send
+`Accept-Language: es` for Spanish.
 
 <p>
-  <img src="examples/report-page-1.png" alt="Page 1 of report.pdf: cover page with the title Cloud Security Assessment in dark blue, client, prepared by and date" width="45%">
+  <img src="examples/report-page-1.png" alt="Page 1 of report.pdf: cover page in Inter with the title Cloud Security Assessment in dark blue, the client as subtitle, and client, prepared by and date" width="45%">
   <img src="examples/report-page-2.png" alt="Page 2 of report.pdf: header with the company name, executive summary, severity table, scope, findings overview table with a dark blue header row, the first detailed finding, footer and page number" width="45%">
 </p>
 
@@ -86,7 +81,7 @@ Anything you ask for that is not applied is printed as a warning before the file
 
 - Branding is a **style description** in plain language, applied to the Word styles (font, colours, cover page, header, footer, page numbers). It is not an exact replica of your own Word template, and this example does not add a logo.
 - Anything Doconda cannot apply comes back in `style_unsupported` and is printed as a warning; the rest is still applied.
-- Fonts: the DOCX refers to the font by name, so if the reader does not have Inter installed, Word substitutes a similar one. In the sample run the PDF renderer did not have Inter either and used DejaVu Serif (reported in `style_unsupported`).
+- Fonts: the PDF embeds the font you ask for (any Google Fonts family). The DOCX refers to it by name, so if the reader does not have Inter installed, Word substitutes a similar one.
 - Doconda decides the layout from the Markdown (cover page, page breaks). The text is exactly what `example.ts` builds from your JSON.
 
 ## Files
