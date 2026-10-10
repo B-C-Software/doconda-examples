@@ -15,6 +15,7 @@ export DOCONDA_API_KEY=ak_eu_…   # get one at https://doconda.com
 | Stack | Example | What it does |
 |---|---|---|
 | No agent | [`python/direct_create.py`](python/direct_create.py) | Word from a prompt, Word from Markdown, an Excel budget, review an existing file |
+| No agent | [`typescript/report-from-json/`](typescript/report-from-json) | JSON findings to a branded, editable Word report and PDF, with status and style checks |
 | Amazon Bedrock | [`python/bedrock_excel_budget.py`](python/bedrock_excel_budget.py) | Converse API agent that delivers an Excel budget |
 | AWS Strands | [`python/strands_bedrock.py`](python/strands_bedrock.py) | Strands agent on Bedrock that delivers a PowerPoint |
 | Google Vertex AI | [`python/vertex_powerpoint.py`](python/vertex_powerpoint.py) | Gemini agent that delivers a PowerPoint |

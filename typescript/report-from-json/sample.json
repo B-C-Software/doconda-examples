@@ -1,0 +1,64 @@
+{
+  "company": {
+    "name": "Harbor & Pine Advisory",
+    "brandColor": "#1F4E79"
+  },
+  "report": {
+    "title": "Cloud Security Assessment",
+    "client": "Example Logistics Ltd.",
+    "preparedBy": "Harbor & Pine Advisory, Security Practice",
+    "date": "2026-10-01",
+    "scope": "Production AWS account, customer-facing web application and CI/CD pipeline. Testing ran from 15 to 26 September 2026."
+  },
+  "summary": "We reviewed the production cloud environment and found 6 issues: 1 critical, 2 high, 2 medium and 1 low. The critical issue (a public storage bucket with shipment exports) should be fixed this week. The others can be planned over the next quarter.",
+  "findings": [
+    {
+      "id": "F-01",
+      "title": "Storage bucket with shipment exports is publicly readable",
+      "severity": "critical",
+      "area": "Storage",
+      "description": "The bucket that stores nightly shipment exports allows anonymous read access. The files contain customer names and delivery addresses.",
+      "recommendation": "Block public access on the bucket and the account, rotate the export links already shared, and review access logs for the last 90 days."
+    },
+    {
+      "id": "F-02",
+      "title": "Root account has no MFA",
+      "severity": "high",
+      "area": "Identity",
+      "description": "The AWS root user can sign in with a password only. It was last used 41 days ago.",
+      "recommendation": "Enable hardware MFA on the root user, store the device securely and alert on any root sign-in."
+    },
+    {
+      "id": "F-03",
+      "title": "Long-lived deploy keys in the CI pipeline",
+      "severity": "high",
+      "area": "CI/CD",
+      "description": "The pipeline uses an IAM user access key created 14 months ago with administrator permissions.",
+      "recommendation": "Replace the key with short-lived OIDC credentials and a role limited to the deploy actions."
+    },
+    {
+      "id": "F-04",
+      "title": "Database snapshots are not encrypted",
+      "severity": "medium",
+      "area": "Data",
+      "description": "Manual snapshots of the orders database are stored without encryption at rest.",
+      "recommendation": "Copy the snapshots with encryption enabled, delete the unencrypted copies and enforce encryption by policy."
+    },
+    {
+      "id": "F-05",
+      "title": "Web application sends no security headers",
+      "severity": "medium",
+      "area": "Application",
+      "description": "Responses lack Content-Security-Policy, Strict-Transport-Security and X-Content-Type-Options headers.",
+      "recommendation": "Add the headers at the load balancer or CDN and start with a report-only Content-Security-Policy."
+    },
+    {
+      "id": "F-06",
+      "title": "Audit log retention is 30 days",
+      "severity": "low",
+      "area": "Logging",
+      "description": "Audit logs are kept for 30 days, shorter than the 1-year retention in the client's own policy.",
+      "recommendation": "Move audit logs to a dedicated archive bucket with a 1-year lifecycle rule."
+    }
+  ]
+}
