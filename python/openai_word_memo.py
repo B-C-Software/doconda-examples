@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1", "openai>=3.28"]
+# dependencies = ["doconda>=0.2", "openai>=3.28"]
 # ///
 """OpenAI (Chat Completions) agent that delivers a Word memo.
 

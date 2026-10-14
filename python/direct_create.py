@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1"]
+# dependencies = ["doconda>=0.2"]
 # ///
 """Generate a Word file (and its PDF) with one call, no agent: from a prompt or from Markdown.
 

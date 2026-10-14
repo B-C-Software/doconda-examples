@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1", "openai-agents>=0.23"]
+# dependencies = ["doconda>=0.2", "openai-agents>=0.23"]
 # ///
 """OpenAI Agents SDK agent with Doconda's tools.
 

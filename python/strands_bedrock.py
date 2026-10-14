@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1", "strands-agents>=1.59"]
+# dependencies = ["doconda>=0.2", "strands-agents>=1.59"]
 # ///
 """AWS Strands agent on Bedrock with Doconda's tools.
 
