@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["anthropic>=1.13", "doconda>=0.1"]
+# dependencies = ["anthropic>=1.13", "doconda>=0.2"]
 # ///
 """Claude (Anthropic API) agent that delivers a Word memo.
 

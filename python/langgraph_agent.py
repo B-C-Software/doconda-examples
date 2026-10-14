@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1", "langchain>=1.4", "langchain-openai>=1.7", "langgraph>=1.2"]
+# dependencies = ["doconda>=0.2", "langchain>=1.4", "langchain-openai>=1.7", "langgraph>=1.2"]
 # ///
 """LangGraph agent with Doconda's tools.
 

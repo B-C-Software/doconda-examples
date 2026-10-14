@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["doconda>=0.1", "google-genai>=2.29"]
+# dependencies = ["doconda>=0.2", "google-genai>=2.29"]
 # ///
 """Gemini on Vertex AI agent that delivers a PowerPoint deck.
 

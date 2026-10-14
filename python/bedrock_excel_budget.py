@@ -1,6 +1,6 @@
 # /// script
 # requires-python = ">=3.10"
-# dependencies = ["boto3>=1.43", "doconda>=0.1"]
+# dependencies = ["boto3>=1.43", "doconda>=0.2"]
 # ///
 """Amazon Bedrock (Converse API) agent that delivers an Excel budget.
 
