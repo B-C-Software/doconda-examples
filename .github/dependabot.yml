@@ -4,6 +4,10 @@ updates:
     directories: ["/typescript", "/typescript/report-from-json"]
     schedule:
       interval: monthly
+    ignore:
+      # @types/node follows the oldest Node each project supports (20 and 22), not the latest
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
     groups:
       npm:
         patterns: ["*"]
