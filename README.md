@@ -56,16 +56,16 @@ Every agent example except the remote MCP one uses `Doconda().tools()`: ready-ma
 
 ## Step-by-step tutorials
 
-- [Excel from an Amazon Bedrock agent](https://docs.doconda.com/en/tutorials/bedrock-excel)
-- [A Vercel AI SDK chatbot that returns a Word file](https://docs.doconda.com/en/tutorials/ai-sdk-chatbot-word)
-- [PowerPoint from Gemini on Vertex AI](https://docs.doconda.com/en/tutorials/vertex-powerpoint)
-- [Review and fix a Word file before sending it](https://docs.doconda.com/en/tutorials/review-word)
+- [Excel from an Amazon Bedrock agent](https://docs.doconda.com/tutorials/bedrock-excel)
+- [A Vercel AI SDK chatbot that returns a Word file](https://docs.doconda.com/tutorials/ai-sdk-chatbot-word)
+- [PowerPoint from Gemini on Vertex AI](https://docs.doconda.com/tutorials/vertex-powerpoint)
+- [Review and fix a Word file before sending it](https://docs.doconda.com/tutorials/review-word)
 
 ## Docs
 
-- [Guides per stack](https://docs.doconda.com/en/agents/introduction)
-- [Python SDK](https://docs.doconda.com/en/sdk/python) · [TypeScript SDK](https://docs.doconda.com/en/sdk/introduction)
-- [MCP server](https://docs.doconda.com/en/agents/mcp)
+- [Guides per stack](https://docs.doconda.com/agents/introduction)
+- [Python SDK](https://docs.doconda.com/sdk/python) · [TypeScript SDK](https://docs.doconda.com/sdk/introduction)
+- [MCP server](https://docs.doconda.com/agents/mcp)
 - [Agent skill for Claude Code, Cursor and Codex](https://github.com/B-C-Software/doconda-skills)
 
 ## Contributing
