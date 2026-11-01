@@ -14,10 +14,10 @@
     "mastra": "tsx mastra.ts"
   },
   "dependencies": {
-    "@ai-sdk/anthropic": "^4.0.78",
-    "@doconda/sdk": "^0.4.0",
-    "@mastra/core": "^1.75.0",
-    "ai": "^7.0.137"
+    "@ai-sdk/anthropic": "^4.0.91",
+    "@doconda/sdk": "^0.7.2",
+    "@mastra/core": "^1.80.0",
+    "ai": "^7.0.156"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",
