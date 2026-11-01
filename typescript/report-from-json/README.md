@@ -98,10 +98,10 @@ Anything you ask for that is not applied is printed as a warning before the file
 
 ## Docs
 
-- [TypeScript SDK](https://docs.doconda.com/en/sdk/introduction)
-- [Create documents](https://docs.doconda.com/en/sdk/create)
-- [Style](https://docs.doconda.com/en/guides/style)
-- [Errors and retries](https://docs.doconda.com/en/sdk/errors)
+- [TypeScript SDK](https://docs.doconda.com/sdk/introduction)
+- [Create documents](https://docs.doconda.com/sdk/create)
+- [Style](https://docs.doconda.com/guides/style)
+- [Errors and retries](https://docs.doconda.com/sdk/errors)
 
 Full documentation: [docs.doconda.com](https://docs.doconda.com)
 

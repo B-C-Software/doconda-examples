@@ -4,7 +4,7 @@
 //   npm start -- my-findings.json  # your own file, same shape
 //
 // The Markdown is built from the JSON in code (no LLM writes the content); Doconda only lays it out and
-// applies the style description. Docs: https://docs.doconda.com/en/sdk/create
+// applies the style description. Docs: https://docs.doconda.com/sdk/create
 
 import { mkdir, readFile, writeFile } from "node:fs/promises"
 import { join } from "node:path"
@@ -144,7 +144,7 @@ function toMarkdown({ report, summary, findings }: FindingsReport): string {
 }
 
 // 3. Branding is a plain-language style description, applied to the Word styles so the file stays editable.
-// https://docs.doconda.com/en/guides/style
+// https://docs.doconda.com/guides/style
 function styleFor({ company, report }: FindingsReport): string {
   return [
     "Inter 11 pt font",
